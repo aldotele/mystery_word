@@ -11,6 +11,7 @@ class Round:
     info = ''  # each time a new Round instance gets created, its info attribute will change
 
     def __init__(self, input_file):
+        Round.info = ''  # reset info stored at each new instance
         random_input_file = Round.select_random_file()
         Round.info = Round.parse_input_file(random_input_file)  # will store five hints and winning words in two keys
 
@@ -33,8 +34,8 @@ class Round:
         return file_name
 
 
-if __name__ == '__main__':
-    test_input_file = 'mwtest1.txt'
-    new_round = Round(test_input_file)
-    print(new_round.info)
+# if __name__ == '__main__':
+    # test_input_file = 'mwtest1.txt'
+    # new_round = Round(test_input_file)
+    # print(new_round.info)
 
