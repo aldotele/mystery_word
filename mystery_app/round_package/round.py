@@ -11,16 +11,17 @@ class Round:
     info = {}  # each time a new Round instance gets created, its info attribute will change
 
     def __init__(self, input_file):  # an input file name is passed to the Round instance
-        Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
+        pass
+        # Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
 
     @staticmethod
-    def parse_input_file(input_file):
+    def parse_input_file(input_file):  # builds a dictionary of information for current round
         round_info = {'hints': [], 'word': ''}
         inf = open(os.path.join(INPUT_FILES_DIR, input_file), 'r')
         lines = inf.readlines()  # store each line as one element of the same list
         for i in range(5):
-            round_info['hints'].append(lines[i].strip())
-        round_info['word'] = lines[-1].strip()
+            round_info['hints'].append(lines[i].strip()) # storing hints
+        round_info['word'] = lines[-1].strip()  # storing winning word
         inf.close()
 
         return round_info  # dictionary with keys hints and word
