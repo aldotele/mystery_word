@@ -1,11 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from mystery_conf.settings import BASE_DIR
-import os
-from .models import Guess
-from django.views.generic import CreateView
-from django.urls import reverse
-from mystery_app.round_package.round import INPUT_FILE_TEST, Round
+from mystery_app.round_package.round import Round
 
 
 def index(request):
@@ -17,8 +11,10 @@ def index_instructions(request):
 
 
 def play_round(request):
+    # a random input file is extracted
+    filename = Round.select_random_file()
     # create round with test input file
-    new_round = Round(INPUT_FILE_TEST)
+    new_round = Round(filename)
     context = {}
     i = 0
     for hint in new_round.info['hints']:
@@ -38,7 +34,7 @@ def end_game(request):
         context['result'] = 'YOU WON !'
     else:
         context['result'] = 'YOU LOST :('
-    print(context)
+    #print(context)
     # if request.POST.get('guess', ''):
     #     g = request.POST.get('guess')
     #     print(g)
