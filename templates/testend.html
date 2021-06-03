@@ -1,0 +1,12 @@
+{% extends "empty.html" %}
+{% block content %}
+{% for hint in hints %}
+<p>{{ hint }}</p>
+{% endfor %}
+<br style=“line-height:N;”>
+<h3>your guess: {{ guess }}</h3>
+<br style=“line-height:N;”>
+<h1>{{ result }}</h1>
+<br style=“line-height:N;”>
+<h3>the word is {{ word }}</h3>
+{% endblock %}

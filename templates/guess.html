@@ -1,0 +1,16 @@
+{% extends "show_words.html" %}
+
+{% block content %}
+<div style="margin-bottom:50px">
+
+    <form id="post-form" method="post">
+        {% csrf_token %}
+        <input size="20" type="text" name="word" id="word" placeholder="Place your guess ...">
+
+        <div style="margin:50px" class="buttons">
+            <button style="padding:10px" type="submit" id="Submit">Submit</button>
+        </div>
+
+    </form>
+</div>
+{% endblock content %}
