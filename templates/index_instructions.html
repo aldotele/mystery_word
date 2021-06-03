@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+    {% block instructions %}
+<style>
+  .instruction-container {
+    border: 3px dashed #051838;
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+</style>
+        <br>
+        <br>
+<div class="instruction-container">
+        <p>The purpose of the game is to guess one word that connects 5 other words</p>
+        <p>You will have one minute to think</p>
+        <p>If you already have a guess, you can write it before the countdown stops</p>
+        <p>There is only one winning word per round</p>
+        <p>The case does not matter: "example" will be the same as "EXAMPLE" or "eXaMple"</p>
+        <p>Spaces before and after do not account: "example" is same as "example       "</p>
+        <p>Good Luck !</p>
+</div>
+    {% endblock instructions %}

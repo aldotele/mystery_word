@@ -10,10 +10,13 @@ from mystery_app.round_package.round import INPUT_FILE_TEST, Round
 
 def index(request):
     return render(request, 'index.html')
-    #return HttpResponse('ok')
 
 
-def show_five_words(request):
+def index_instructions(request):
+    return render(request, 'index_instructions.html')
+
+
+def play_round(request):
     # create round with test input file
     new_round = Round(INPUT_FILE_TEST)
     context = {}
@@ -24,7 +27,7 @@ def show_five_words(request):
         i += 1
     #print(context)
 
-    return render(request, 'testshow.html', context)
+    return render(request, 'round.html', context)
 
 
 def end_game(request):
@@ -41,7 +44,7 @@ def end_game(request):
     #     print(g)
     #     context['guess'] = g
 
-    return render(request, 'testend.html', context)
+    return render(request, 'end.html', context)
 
 
 """
