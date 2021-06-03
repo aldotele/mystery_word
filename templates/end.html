@@ -1,19 +1,24 @@
 {% extends "empty.html" %}
 
-    {% block content %}
+{% block content %}
 
-        {% for hint in hints %}
-            <p>{{ hint }}</p>
-        {% endfor %}
+    {% for hint in hints %}
+        <p>{{ hint }}</p>
+    {% endfor %}
 
-        <br style=“line-height:N;”>
-        <h3>your guess: {{ guess }}</h3>
-        <br style=“line-height:N;”>
-        <h1>{{ result }}</h1>
-        <br style=“line-height:N;”>
-        <h3>the word is {{ word }}</h3>
+    <br style=“line-height:N;”>
+    <h3>your guess: {{ guess }}</h3>
+    <br style=“line-height:N;”>
+    <h1>{{ result }}</h1>
+    <br style=“line-height:N;”>
+    <h3>the word is {{ word }}</h3>
 
-<a style="font-size:20px;margin-top:50px;background-color:green;padding:10px 50px 10px 50px" class="btn btn-primary" href="/play">Start New Round</a>
+    <a style="font-size:20px;margin-top:50px;background-color:green;padding:10px 50px 10px 50px"
+       class="btn btn-primary" href="/play">Start New Round</a>
 
+{% endblock %}
 
-    {% endblock %}
+{% block extra_js %}
+
+{% endblock extra_js %}
+
