@@ -3,9 +3,10 @@
 <style>
     .hint {
     font-size: 20px;
+    border: 2px solid #212529;
+    font-weight:800;
     }
 </style>
-<h1 class="fw-bolder">One minute to think ...</h1>
 
 <div style="margin-top:50px;margin-bottom:50px">
     <p class="hint">{{ option0 }}</p>
@@ -14,12 +15,15 @@
     <p class="hint">{{ option3 }}</p>
     <p class="hint">{{ option4 }}</p>
 
+    <h3 style="padding-top:30px; padding-bottom:20px" class="fw-bolder">One minute to think ...</h3>
+
         <form action="/end" method="POST">
             <div >
           <input type="text" name="guess" placeholder="Enter Guess" />
             </div>
             <div style="margin:50px">
-          <input style="width:120px;height:50px;background-color:green;color:white" type="submit" value="Submit guess" />
+          <input style="font-weight:700;width:120px;height:50px;background-color:green;color:white"
+                 type="submit" value="Submit guess" />
             </div>
         </form>
 </div>
