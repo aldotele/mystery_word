@@ -1,15 +1,18 @@
 import os
+import random
 from mystery_conf.settings import BASE_DIR
 
 INPUT_FILES_DIR = os.path.join(BASE_DIR, 'mystery_app', 'input_files')
-INPUT_FILE_TEST = 'mwtest.txt'
+INPUT_FILE_TEST = ''
+NUMBER_OF_FILES_AVAILABLE = 6  # currently there are 6 possible input files
 
 
 class Round:
-    info = ''
+    info = ''  # each time a new Round instance gets created, its info attribute will change
 
     def __init__(self, input_file):
-        Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
+        random_input_file = Round.select_random_file()
+        Round.info = Round.parse_input_file(random_input_file)  # will store five hints and winning words in two keys
 
     @staticmethod
     def parse_input_file(input_file):
@@ -23,9 +26,15 @@ class Round:
 
         return round_info
 
+    @staticmethod
+    def select_random_file():
+        random_number = random.randrange(1, NUMBER_OF_FILES_AVAILABLE+1)
+        file_name = 'mwtest' + str(random_number) + '.txt'
+        return file_name
+
 
 if __name__ == '__main__':
-    test_input_file = 'mwtest.txt'
+    test_input_file = 'mwtest1.txt'
     new_round = Round(test_input_file)
     print(new_round.info)
 
