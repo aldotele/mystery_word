@@ -8,7 +8,7 @@ NUMBER_OF_FILES_AVAILABLE = 6  # currently there are 6 possible input files
 
 
 class Round:
-    info = None  # each time a new Round instance gets created, its info attribute will change
+    info = {}  # each time a new Round instance gets created, its info attribute will change
 
     def __init__(self, input_file):  # an input file name is passed to the Round instance
         Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
