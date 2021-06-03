@@ -33,6 +33,8 @@ class Round:
         return file_name
 
 
+current_round = Round(INPUT_FILE_TEST)
+
 # if __name__ == '__main__':
     # test_input_file = 'mwtest1.txt'
     # new_round = Round(test_input_file)
