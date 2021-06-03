@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Scrolling Nav - Start Bootstrap Template</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <div class="container px-4">
-                <a class="navbar-brand" href="/">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
-            <div style="height:1000px" class="container px-4 text-center">
-                {% block content %}
-                <h1 class="fw-bolder">{{ guess }}</h1>
-                {% endblock content %}
+{% extends "empty.html" %}
+
+    {% block content %}
+
+        {% for hint in hints %}
+            <p>{{ hint }}</p>
+        {% endfor %}
+
+        <br style=“line-height:N;”>
+        <h3>your guess: {{ guess }}</h3>
+        <br style=“line-height:N;”>
+        <h1>{{ result }}</h1>
+        <br style=“line-height:N;”>
+        <h3>the word is {{ word }}</h3>
+
+<a style="font-size:20px;margin-top:50px;background-color:green;padding:10px 50px 10px 50px" class="btn btn-primary" href="/play">Start New Round</a>
+
+
+    {% endblock %}

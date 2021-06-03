@@ -1,0 +1,26 @@
+{% extends 'empty.html' %}
+{% block content %}
+<style>
+    .hint {
+    font-size: 20px;
+    }
+</style>
+<h1 class="fw-bolder">One minute to think ...</h1>
+
+<div style="margin-top:50px;margin-bottom:50px">
+    <p class="hint">{{ option0 }}</p>
+    <p class="hint">{{ option1 }}</p>
+    <p class="hint">{{ option2 }}</p>
+    <p class="hint">{{ option3 }}</p>
+    <p class="hint">{{ option4 }}</p>
+
+        <form action="/end" method="POST">
+            <div >
+          <input type="text" name="guess" placeholder="Enter Guess" />
+            </div>
+            <div style="margin:50px">
+          <input style="width:120px;height:50px;background-color:green;color:white" type="submit" value="Submit guess" />
+            </div>
+        </form>
+</div>
+{% endblock content %}
