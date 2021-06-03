@@ -17,7 +17,7 @@ def play_round(request):
     new_round = Round(filename)
     context = {}
     i = 0
-    for hint in new_round.info['hints']:
+    for hint in Round.info['hints']:
         key = "option" + str(i)
         context[key] = hint
         i += 1
