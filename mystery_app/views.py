@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from mystery_app.round_package.round import Round
+from mystery_app.round_package.round import Round, current_round
 
 
 def index(request):
@@ -11,16 +11,13 @@ def index_instructions(request):
 
 
 def play_round(request):
-    # a random input file is extracted
-    #filename = Round.select_random_file()[0]
-    # create round with extracted input file
-    #current_round_data = Round.parse_input_file(filename)
-    #Round.info = current_round_data
-    #print(Round.info)
-    new_round = Round()
+    #new_round = Round()
+    random_input_file = Round.select_random_file()[0]
+    current_round.info = Round.parse_input_file(random_input_file)
+    print(current_round.info)
     context = {}  # building context variable
     i = 0
-    for hint in Round.hints:
+    for hint in current_round.info['hints']:
         key = "option" + str(i)  # option0, option1, option2, etc. will be the keys
         context[key] = hint  # the hints will be values
         i += 1
@@ -30,10 +27,11 @@ def play_round(request):
 
 
 def end_game(request):
+    print(current_round.info)
     guess = request.POST.get('guess', '').upper().strip()
-    winning_word = Round.word.upper().strip()
+    winning_word = current_round.info['word'].upper().strip()
     context = dict()
-    context['hints'] = Round.hints
+    context['hints'] = current_round.info['hints']
     context['guess'] = guess
     context['word'] = winning_word
     if guess == winning_word:
