@@ -1,0 +1,69 @@
+{% extends 'empty.html' %}
+{% block content %}
+<style>
+    .hint {
+    font-size: 20px;
+    border: 2px solid #212529;
+    font-weight:800;
+    }
+
+    #output, #word_is {
+    display: none;
+    }
+
+    #user_guess {
+    text-align: center;
+    }
+</style>
+
+<div style="margin-top:50px;margin-bottom:50px">
+    <p class="hint">{{ option0 }}</p>
+    <p class="hint">{{ option1 }}</p>
+    <p class="hint">{{ option2 }}</p>
+    <p class="hint">{{ option3 }}</p>
+    <p class="hint">{{ option4 }}</p>
+
+    <h3 id="thinking" style="padding-top:30px; padding-bottom:20px" class="fw-bolder">One minute to think ...</h3>
+
+        <form id="form" onsubmit="return false;" method="POST">
+            <div >
+          <input type="text" name="guess" placeholder="Enter Guess" id="user_guess"/>
+            </div>
+            <div style="margin:50px">
+              <input id="submit-button" style="font-weight:700;width:120px;height:50px;background-color:green;color:white"
+                     type="button" value="Submit Guess"
+                     onclick="show_result()"/>
+            </div>
+        </form>
+
+    <div class="result-container">
+        <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
+        <h3 id="word_is">the word is</h3><h3 id="output">{{ word }}</h3>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+
+<script>
+
+function show_result() {
+    var winning_word = document.getElementById("output").textContent
+    var input = document.getElementById("user_guess").value.toUpperCase().trim();
+    var final_message = document.getElementById("message");
+    if (input == winning_word) {
+        final_message.textContent += "YOU WON"
+        document.getElementById("message").style.color = "#3DFF00"
+    } else {
+        final_message.textContent += "YOU LOST :("
+        document.getElementById("message").style.color = "#BF2800"
+    }
+    document.getElementById("user_guess").disabled = true;
+    document.getElementById("user_guess").readOnly = true;
+    document.getElementById('submit-button').style.display = "none";
+    document.getElementById('word_is').style.display = "block";
+    document.getElementById('output').style.display = "block";
+}
+</script>
+
+{% endblock extra_js %}
