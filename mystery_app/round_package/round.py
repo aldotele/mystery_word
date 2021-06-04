@@ -8,10 +8,10 @@ NUMBER_OF_FILES_AVAILABLE = 6  # currently there are 6 possible input files
 
 
 class Round:
-    info = {}  # each time a new Round instance gets created, its info attribute will change
+    #info = {}  # each time a new Round instance gets created, its info attribute will change
 
-    def __init__(self, input_file):  # an input file name is passed to the Round instance
-        self.info = {}
+    def __init__(self):
+        Round.info = {}
         # Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
 
     @staticmethod
@@ -20,7 +20,7 @@ class Round:
         inf = open(os.path.join(INPUT_FILES_DIR, input_file), 'r')
         lines = inf.readlines()  # store each line as one element of the same list
         for i in range(5):
-            round_info['hints'].append(lines[i].strip()) # storing hints
+            round_info['hints'].append(lines[i].strip())  # storing hints
         round_info['word'] = lines[-1].strip()  # storing winning word
         inf.close()
 
@@ -30,10 +30,10 @@ class Round:
     def select_random_file():
         random_number = random.randrange(1, NUMBER_OF_FILES_AVAILABLE+1)
         file_name = 'mwtest' + str(random_number) + '.txt'
-        return file_name
+        return file_name, random_number
 
 
-current_round = Round(INPUT_FILE_TEST)
+#current_round = Round(INPUT_FILE_TEST)
 
 # if __name__ == '__main__':
     # test_input_file = 'mwtest1.txt'
