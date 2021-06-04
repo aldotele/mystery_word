@@ -11,14 +11,11 @@ def index_instructions(request):
 
 
 def play_round(request):
-    global random_file  # TEMPORARY SOLUTION
-
-    random_file = Round.select_random_file()[0]
-    Round.info = Round.parse_input_file(random_file)
-    print(Round.info)
+    random_input_file = Round.select_random_file()[0]  # random input file extracted
+    new_round = Round(random_input_file)
     context = {}  # building context variable
     i = 0
-    for hint in Round.info['hints']:
+    for hint in Round.hints:
         key = "option" + str(i)  # option0, option1, option2, etc. will be the keys
         context[key] = hint  # the hints will be values
         i += 1
@@ -28,12 +25,10 @@ def play_round(request):
 
 
 def end_game(request):
-    print(Round.info)
-    same_round_info = Round.parse_input_file(random_file)  # random file should still be the same
     guess = request.POST.get('guess', '').upper().strip()
-    winning_word = same_round_info['word'].upper().strip()
+    winning_word = Round.word.upper().strip()
     context = dict()
-    context['hints'] = same_round_info['hints']
+    context['hints'] = Round.hints
     context['guess'] = guess
     context['word'] = winning_word
     if guess == winning_word:
@@ -42,14 +37,6 @@ def end_game(request):
         context['result'] = 'YOU LOST :('
 
     return render(request, 'end.html', context)
-
-    # context['guess'] = guess.upper()  # adding the guess to the current round information
-    # if guess.upper().strip() == context['word'].upper():
-    #     context['result'] = 'YOU WON !'
-    # else:
-    #     context['result'] = 'YOU LOST :('
-    # print(context)
-    # current_round.info = {}
 
 
 """
