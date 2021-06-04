@@ -9,14 +9,15 @@ NUMBER_OF_FILES_AVAILABLE = 6  # currently there are 6 possible input files
 
 class Round:
     #info = {}  # each time a new Round instance gets created, its info attribute will change
-    hints = []
-    word = ''
+    # hints = []
+    # word = ''
 
     def __init__(self):
-        random_input_file = Round.select_random_file()[0]
-        current_round_data = Round.parse_input_file(random_input_file)
-        Round.hints = current_round_data['hints']
-        Round.word = current_round_data['word']
+        self.info = {}
+        # random_input_file = Round.select_random_file()[0]
+        # current_round_data = Round.parse_input_file(random_input_file)
+        # Round.hints = current_round_data['hints']
+        # Round.word = current_round_data['word']
         # Round.info = Round.parse_input_file(input_file)  # will store five hints and winning words in two keys
 
     @staticmethod
@@ -37,6 +38,8 @@ class Round:
         file_name = 'mwtest' + str(random_number) + '.txt'
         return file_name, random_number
 
+
+current_round = Round()
 
 # if __name__ == '__main__':
     # test_input_file = 'mwtest1.txt'
