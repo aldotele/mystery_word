@@ -11,16 +11,14 @@ def index_instructions(request):
 
 
 def play_round(request):
-    # a random input file is extracted
-    #filename = Round.select_random_file()[0]
-    # create round with extracted input file
-    #current_round_data = Round.parse_input_file(filename)
-    #Round.info = current_round_data
-    #print(Round.info)
-    new_round = Round()
+    global random_file  # TEMPORARY SOLUTION
+
+    random_file = Round.select_random_file()[0]
+    Round.info = Round.parse_input_file(random_file)
+    print(Round.info)
     context = {}  # building context variable
     i = 0
-    for hint in Round.hints:
+    for hint in Round.info['hints']:
         key = "option" + str(i)  # option0, option1, option2, etc. will be the keys
         context[key] = hint  # the hints will be values
         i += 1
@@ -30,10 +28,12 @@ def play_round(request):
 
 
 def end_game(request):
+    print(Round.info)
+    same_round_info = Round.parse_input_file(random_file)  # random file should still be the same
     guess = request.POST.get('guess', '').upper().strip()
-    winning_word = Round.word.upper().strip()
+    winning_word = same_round_info['word'].upper().strip()
     context = dict()
-    context['hints'] = Round.hints
+    context['hints'] = same_round_info['hints']
     context['guess'] = guess
     context['word'] = winning_word
     if guess == winning_word:
