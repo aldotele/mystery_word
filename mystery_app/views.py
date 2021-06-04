@@ -11,6 +11,7 @@ def index_instructions(request):
 
 
 def play_round(request):
+    current_round.info = {}
     # a random input file is extracted
     filename = Round.select_random_file()
     # create round with extracted input file
@@ -35,7 +36,7 @@ def end_game(request):
     else:
         context['result'] = 'YOU LOST :('
     #print(context)
-
+    current_round.info = {}
     return render(request, 'end.html', context)
 
 
