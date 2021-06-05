@@ -63,7 +63,13 @@ function show_result() {
     document.getElementById('submit-button').style.display = "none";
     document.getElementById('word_is').style.display = "block";
     document.getElementById('output').style.display = "block";
+
+    var music = document.getElementById("Player");
+    music.muted = true;
 }
+
+var music = document.getElementById("Player");
+music.muted = false;
 </script>
 
 {% endblock extra_js %}
