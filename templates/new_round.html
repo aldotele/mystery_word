@@ -94,9 +94,13 @@ function show_result() {
     if (input == winning_word) {
         final_message.textContent += "YOU WON"
         document.getElementById("message").style.color = "#3DFF00"
+        var happy_song = document.getElementById("happy");
+        happy_song.play();
     } else {
         final_message.textContent += "YOU LOST :("
         document.getElementById("message").style.color = "#BF2800"
+        var sad_song = document.getElementById("sad");
+        sad_song.play();
     }
     document.getElementById("user_guess").disabled = true;
     document.getElementById("user_guess").readOnly = true;

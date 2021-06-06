@@ -10,8 +10,20 @@
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+        <!-- audio round -->
         <audio id="Player" autoplay muted>
             <source src="{% static 'media/quickly.ogg' %}"/>
+        </audio>
+
+        <!-- audio lost -->
+        <audio id="sad">
+            <source src="{% static 'media/sad-game.ogg' %}"/>
+        </audio>
+
+        <!-- audio win -->
+        <audio id="happy">
+            <source src="{% static 'media/tada.ogg' %}"/>
         </audio>
 
     </head>
