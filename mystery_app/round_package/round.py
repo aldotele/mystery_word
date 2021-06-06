@@ -1,10 +1,11 @@
 import os
 import random
 from mystery_conf.settings import BASE_DIR
+from mystery_app.round_package.helper import decode_word
 
 INPUT_FILES_DIR = os.path.join(BASE_DIR, 'mystery_app', 'input_files')
 INPUT_FILE_TEST = ''
-NUMBER_OF_FILES_AVAILABLE = 6  # currently there are 6 possible input files
+NUMBER_OF_FILES_AVAILABLE = 9  # currently there are 9 possible input files
 
 
 class Round:
@@ -24,7 +25,8 @@ class Round:
         lines = inf.readlines()  # store each line as one element of the same list
         for i in range(5):
             round_info['hints'].append(lines[i].strip())  # storing hints
-        round_info['word'] = lines[-1].strip()  # storing winning word
+        encoded_winning_word = lines[-1].strip()  # in base 64
+        round_info['word'] = decode_word(encoded_winning_word)  # decoding and storing the winning word
         inf.close()
 
         return round_info  # dictionary with keys hints and word
@@ -32,12 +34,6 @@ class Round:
     @staticmethod
     def select_random_file():
         random_number = random.randrange(1, NUMBER_OF_FILES_AVAILABLE+1)
-        file_name = 'mwtest' + str(random_number) + '.txt'
+        file_name = 'mw' + str(random_number) + '.txt'  # composing the name of the file
         return file_name, random_number
-
-
-# if __name__ == '__main__':
-    # test_input_file = 'mwtest1.txt'
-    # new_round = Round(test_input_file)
-    # print(new_round.info)
 
