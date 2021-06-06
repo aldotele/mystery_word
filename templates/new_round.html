@@ -14,8 +14,47 @@
     #user_guess {
     text-align: center;
     }
+
+    text {
+    transform: rotate(90deg);
+    }
+
+    svg {
+    align-self: center;
+    height: 8vh;
+    width: 8vh;
+    transform: rotate(-90deg);
+    }
+
+    circle {
+    animation: spin 100s linear forwards;
+    }
+
+    @keyframes spin {
+    0% {
+      stroke-dashoffset: 126;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+    }
 </style>
 
+<!-- timer -->
+<svg id="timer-section" viewBox="0 0 42 42">
+<defs>
+<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:rgb(220,220,220);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(255,240,245);stop-opacity:1" />
+</linearGradient>
+</defs>
+
+<circle id="timer-circle" r=20 cx=21 cy=21 fill="url(#grad1)" stroke="green" stroke-width="3px"
+        stroke-dasharray="126" stroke-linecap="round"></circle>
+<text y="-15px" x="13px" fill="grey"></text>
+</svg>
+
+<!-- hint words -->
 <div style="margin-top:50px;margin-bottom:50px">
     <p class="hint">{{ option0 }}</p>
     <p class="hint">{{ option1 }}</p>
@@ -23,23 +62,23 @@
     <p class="hint">{{ option3 }}</p>
     <p class="hint">{{ option4 }}</p>
 
-    <h3 id="thinking" style="padding-top:30px; padding-bottom:20px" class="fw-bolder">One minute to think ...</h3>
-
-        <form id="form" onsubmit="return false;" method="POST">
-            <div >
-          <input type="text" name="guess" placeholder="Enter Guess" id="user_guess"/>
-            </div>
-            <div style="margin:50px">
-              <input id="submit-button" style="font-weight:700;width:120px;height:50px;background-color:green;color:white"
-                     type="button" value="Submit Guess"
-                     onclick="show_result()"/>
-            </div>
-        </form>
-
-    <div class="result-container">
-        <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
-        <h3 id="word_is">the word is</h3><h3 id="output">{{ word }}</h3>
+<!-- guess submit -->
+<form id="form" onsubmit="return false;" method="POST">
+    <div >
+  <input type="text" name="guess" placeholder="Enter Guess" id="user_guess"/>
     </div>
+    <div style="margin:50px">
+      <input id="submit-button" style="font-weight:700;width:120px;height:50px;background-color:green;color:white"
+             type="button" value="Submit Guess"
+             onclick="show_result()"/>
+    </div>
+</form>
+
+<!-- hidden result container -->
+<div class="result-container">
+    <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
+    <h3 id="word_is">the word is</h3><h3 id="output">{{ word }}</h3>
+</div>
 </div>
 {% endblock content %}
 
@@ -48,6 +87,7 @@
 <script>
 
 function show_result() {
+    document.getElementById("timer-section").style.display = "none";
     var winning_word = document.getElementById("output").textContent
     var input = document.getElementById("user_guess").value.toUpperCase().trim();
     var final_message = document.getElementById("message");
@@ -70,6 +110,41 @@ function show_result() {
 
 var music = document.getElementById("Player");
 music.muted = false;
+
+
+timer();
+
+document.getElementById("submit-button").addEventListener("click", timer);
+
+function timer() {
+  var sec = 100;
+
+  function updateSec() {
+    sec--;
+    if (sec < 30) {
+      document.getElementById("timer-circle").style.stroke = "#FF7400";
+    }
+    if (sec < 10) {
+      document.getElementById("timer-circle").style.stroke = "#FF4100";
+      document.querySelector("text").innerHTML = `&nbsp${sec}`;
+    } else {
+      document.querySelector("text").innerHTML = sec;
+    }
+    if (sec === 0) {
+      stopTimer();
+      if (document.getElementById("user_guess").disabled == false) {
+        show_result();
+      }
+    }
+  }
+  updateSec();
+
+  var interval = setInterval(updateSec, 1000);
+
+  function stopTimer() {
+    clearInterval(interval);
+  }
+}
 </script>
 
 {% endblock extra_js %}
