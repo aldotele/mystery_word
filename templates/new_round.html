@@ -54,6 +54,10 @@
 <text y="-15px" x="13px" fill="grey"></text>
 </svg>
 
+<!-- mute button -->
+<!--<a id="mute-btn" href="#" onclick="document.getElementById('Player').muted = true;">sound off</a>-->
+
+
 <!-- hint words -->
 <div style="margin-top:50px;margin-bottom:50px">
     <p class="hint">{{ option0 }}</p>
@@ -65,7 +69,7 @@
 <!-- guess submit -->
 <form id="form" onsubmit="return false;" method="POST">
     <div >
-  <input type="text" name="guess" placeholder="Enter Guess" id="user_guess"/>
+  <input type="text" name="guess" placeholder="Enter Your Guess" id="user_guess"/>
     </div>
     <div style="margin:50px">
       <input id="submit-button" style="font-weight:700;width:120px;height:50px;background-color:green;color:white"
@@ -121,7 +125,7 @@ timer();
 document.getElementById("submit-button").addEventListener("click", timer);
 
 function timer() {
-  var sec = 100;
+  var sec = 60;
 
   function updateSec() {
     sec--;
