@@ -1,8 +1,13 @@
 from django.db import models
 
 
-class Guess(models.Model):
-    word = models.CharField(max_length=20)
+class Round(models.Model):
+    hint_1 = models.CharField(max_length=30)
+    hint_2 = models.CharField(max_length=30)
+    hint_3 = models.CharField(max_length=30)
+    hint_4 = models.CharField(max_length=30)
+    hint_5 = models.CharField(max_length=30)
+    solution = models.CharField(max_length=30)
 
-    class Meta:
-        db_table = 'guess'
+    def __str__(self):
+        return f"round {self.pk}"
