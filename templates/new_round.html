@@ -60,11 +60,11 @@
 
 <!-- hint words -->
 <div style="margin-top:50px;margin-bottom:50px">
-    <p class="hint">{{ option0 }}</p>
-    <p class="hint">{{ option1 }}</p>
-    <p class="hint">{{ option2 }}</p>
-    <p class="hint">{{ option3 }}</p>
-    <p class="hint">{{ option4 }}</p>
+    <p class="hint">{{ hint1 }}</p>
+    <p class="hint">{{ hint2 }}</p>
+    <p class="hint">{{ hint3 }}</p>
+    <p class="hint">{{ hint4 }}</p>
+    <p class="hint">{{ hint5 }}</p>
 
 <!-- guess submit -->
 <form id="form" onsubmit="return false;" method="POST">
@@ -81,9 +81,15 @@
 <!-- hidden result container -->
 <div class="result-container">
     <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
-    <h3 id="word_is">the word is</h3><h3 id="output">{{ word }}</h3>
+    <h3 id="word_is">the word is</h3><h3 id="output">{{ solution }}</h3>
 </div>
+
+<!-- hidden play again button -->
+<div>
+<a id="play_again" style="display:none;font-size:15px;font-weight:700;margin:30px auto;background-color:green;
+width:150px;" class="btn btn-primary" href="/play">play again</a>
 </div>
+
 {% endblock content %}
 
 {% block extra_js %}
@@ -111,6 +117,7 @@ function show_result() {
     document.getElementById('submit-button').style.display = "none";
     document.getElementById('word_is').style.display = "block";
     document.getElementById('output').style.display = "block";
+    document.getElementById('play_again').style.display = "inline-block";
 
     var music = document.getElementById("Player");
     music.muted = true;
