@@ -15,6 +15,22 @@
     text-align: center;
     }
 
+    #instructions {
+    display: none;
+    }
+
+    #about {
+    display: none;
+    }
+
+    #rules-a {
+    display: none;
+    }
+
+    #about-a {
+    display: none;
+    }
+
     text {
     transform: rotate(90deg);
     }
@@ -59,7 +75,7 @@
 
 
 <!-- hint words -->
-<div style="margin-top:50px;margin-bottom:50px">
+<div style="margin-top:50px;margin-bottom:50px;font-family: var(--bs-font-sans-serif)">
     <p class="hint">{{ hint1 }}</p>
     <p class="hint">{{ hint2 }}</p>
     <p class="hint">{{ hint3 }}</p>
@@ -67,7 +83,7 @@
     <p class="hint">{{ hint5 }}</p>
 
 <!-- guess submit -->
-<form id="form" onsubmit="return false;" method="POST">
+<form style="font-family:'Roboto Mono', monospace;" id="form" onsubmit="return false;" method="POST">
     <div >
   <input type="text" name="guess" placeholder="Enter Your Guess" id="user_guess"/>
     </div>
@@ -79,13 +95,13 @@
 </form>
 
 <!-- hidden result container -->
-<div class="result-container">
+<div style="font-family:'Roboto Mono', monospace;" class="result-container">
     <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
-    <h3 id="word_is">the word is</h3><h3 id="output">{{ solution }}</h3>
+    <h3 id="word_is">the word is</h3><h3 id="output" style="font-weight: 700;">{{ solution }}</h3>
 </div>
 
 <!-- hidden play again button -->
-<div>
+<div id="play-again-div" style="font-family:'Roboto Mono', monospace;">
 <a id="play_again" style="display:none;font-size:15px;font-weight:700;margin:30px auto;background-color:green;
 width:150px;" class="btn btn-primary" href="/play">play again</a>
 </div>
@@ -107,7 +123,7 @@ function show_result() {
         var happy_song = document.getElementById("happy");
         happy_song.play();
     } else {
-        final_message.textContent += "YOU LOST :("
+        final_message.textContent += "YOU LOST"
         document.getElementById("message").style.color = "#BF2800"
         var sad_song = document.getElementById("sad");
         sad_song.play();
@@ -121,6 +137,7 @@ function show_result() {
 
     var music = document.getElementById("Player");
     music.muted = true;
+    document.getElementById('play-again-div').scrollIntoView();
 }
 
 var music = document.getElementById("Player");
