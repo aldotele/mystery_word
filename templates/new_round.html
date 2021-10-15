@@ -59,7 +59,7 @@
 
 
 <!-- hint words -->
-<div style="margin-top:50px;margin-bottom:50px">
+<div style="margin-top:50px;margin-bottom:50px;font-family: var(--bs-font-sans-serif)">
     <p class="hint">{{ hint1 }}</p>
     <p class="hint">{{ hint2 }}</p>
     <p class="hint">{{ hint3 }}</p>
@@ -67,7 +67,7 @@
     <p class="hint">{{ hint5 }}</p>
 
 <!-- guess submit -->
-<form id="form" onsubmit="return false;" method="POST">
+<form style="font-family:'Roboto Mono', monospace;" id="form" onsubmit="return false;" method="POST">
     <div >
   <input type="text" name="guess" placeholder="Enter Your Guess" id="user_guess"/>
     </div>
@@ -79,13 +79,13 @@
 </form>
 
 <!-- hidden result container -->
-<div class="result-container">
+<div style="font-family:'Roboto Mono', monospace;" class="result-container">
     <h1 style="margin-top: 50px;font-weight:700" id="message"></h1>
     <h3 id="word_is">the word is</h3><h3 id="output">{{ solution }}</h3>
 </div>
 
 <!-- hidden play again button -->
-<div>
+<div style="font-family:'Roboto Mono', monospace;">
 <a id="play_again" style="display:none;font-size:15px;font-weight:700;margin:30px auto;background-color:green;
 width:150px;" class="btn btn-primary" href="/play">play again</a>
 </div>
