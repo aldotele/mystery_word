@@ -8,6 +8,14 @@
         <meta name="author" content="" />
         <title>Mystery Word Game</title>
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- the following relate to the new favicon-->
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static '/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static '/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static '/safari-pinned-tab.svg' %}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
@@ -95,7 +103,10 @@
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Mystery Word 2021</p></div>
+            <img style="display: block;margin:0 auto;" src="{% static 'assets/favicon.ico' %}"  height="40" width="40">
+            <div style="margin-top: 20px;" class="container px-4">
+                <p class="m-0 text-center text-white">Copyright &copy; The Mystery Word 2021</p>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
