@@ -115,7 +115,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True  # rm to make admin work on vercel
 
 
 # Static files (CSS, JavaScript, Images)
