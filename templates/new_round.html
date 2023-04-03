@@ -85,7 +85,7 @@
 <!-- guess submit -->
 <form style="font-family:'Roboto Mono', monospace;" id="form" onsubmit="return false;" method="POST" autocomplete="off">
     <div >
-  <input type="text" name="guess" placeholder="Enter Your Guess" id="user_guess"/>
+  <input type="text" name="guess" placeholder="Enter Your Guess" id="user_guess" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Guess'"/>
     </div>
     <div style="margin:50px">
       <input id="submit-button" style="font-weight:700;width:140px;height:50px;background-color:green;color:white"
